@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChainReaction Game</title>
+    <style>
+        .play_buttons
+        {
+           width: 100px;
+           height: 100px;
+           border-radius: 5px;
+           margin : auto;
+           align-items :centre;
+           border: 1px outset blue;
+           cursor:pointer;
+           font-size: 50px;
+           text-align: center;
+        }
+        body
+        {
+            background-color: grey;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        .container
+        {
+            background-color: aquamarine;
+            max-width: 650px;
+            margin: auto;
+            height: 700px;
+            margin-top: -55px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            margin-top:40px
+            position: fixed
+        }
+        table
+        {
+            margin-top:80px
+        }
+        label
+        {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            font-size: 150%;
+            margin-top:90px;
+        }
+        .Reset_button
+        {
+            background-color: #008CBA;
+            height:50px;
+            width:150px;
+            margin-left:880px;
+            margin-top:-200px;
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% if msg == 'red' or msg == 'green' %}
+        <label type="text">Player {{msg}}'s turn</label>
+    {% endif %}
+    {% if msg == 'red_start' %}
+        <label type="text">Player red's turn</label>
+    {% endif %}
+    {% if msg == 'Red' or msg == 'Green' %}
+        <script>
+            window.alert("Player {{msg}} Wins");
+        </script>
+    {% endif %}
+    <div class = "container">
+        <form action="{{ url_for('index') }}" method="post">
+            <input type="hidden" value="{{msg}}" name="choice"/>
+            <table>
+                {% for i in range(5) %}
+                    <tr>
+                        {% for j in range(5) %}
+                        <td>
+                            <button class="play_buttons" type="submit" value={{i*5+j}} name="button" {% if msg=='Red' or msg=='Green' %} disabled {% endif %} {% if board_Player[i][j] =="R" %} style="background-color:red;" {% endif %} {% if board_Player[i][j] =="G" %} style="background-color:green;" {% endif %} >
+                                {% if Display_Box[i][j] != '0' %}
+                                    {{Display_Box[i][j]}}
+                                {% endif %}
+                            </button>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+    <form action="{{ url_for('reset') }}" method="post">
+        <button class="Reset_button">Reset</button>
+    </form>
+</body>
+</html>
