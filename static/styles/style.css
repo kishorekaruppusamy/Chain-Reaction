@@ -1,0 +1,53 @@
+.play_buttons
+        {
+           width: 100px;
+           height: 100px;
+           border-radius: 5px;
+           margin : auto;
+           align-items :centre;
+           border: 1px outset blue;
+           cursor:pointer;
+           font-size: 50px;
+           text-align: center;
+        }
+        body
+        {
+            background-color: grey;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        .container
+        {
+            background-color: aquamarine;
+            max-width: 650px;
+            margin: auto;
+            height: 700px;
+            margin-top: -55px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            margin-top:40px
+            position: fixed
+        }
+        table
+        {
+            margin-top:80px
+        }
+        label
+        {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            font-size: 150%;
+            margin-top:90px;
+        }
+        .Reset_button
+        {
+            background-color: #008CBA;
+            height:50px;
+            width:150px;
+            margin-left:880px;
+            margin-top:-200px;
+            font-size: 25px;
+            text-align: center;
+        }
